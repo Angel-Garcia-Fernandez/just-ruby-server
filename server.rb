@@ -1,6 +1,7 @@
 require 'socket'
 require 'uri'
 require 'yaml/store'
+Dir['resources/*.rb'].each { |file| require_relative file }
 require_relative 'config/routes'
 
 port = 3000
