@@ -1,7 +1,13 @@
 class BaseController
+
+  def initialize(params = {})
+    @params = params
+  end
+
   def render(view, opts={})
     require_relative "../app/views/#{controller_name}/#{view}"
-    self.class.const_get(view.capitalize).send(:new).send(:render)
+    view_class = self.class.const_get(view.capitalize)
+    view_class.new(@params).render
   end
 
   def redirect(path)
