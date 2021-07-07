@@ -10,4 +10,8 @@ class RedirectionRoute
     @path_regex = path_to_regex(path)
     @param_names = path.scan(/:([\w_]+)/).flatten
   end
+
+  def resolve(request_line)
+    BaseView.new.redirect_to(@redirect_to)
+  end
 end

@@ -81,7 +81,7 @@ loop do
 
   #Construct the HTTP response
   http_response = <<~MSG
-    HTTP/1.1 #{status_code}\r\n" # 1
+    HTTP/1.1 #{status_code}
     Content-Type: text/html
     Location: /show/data
     

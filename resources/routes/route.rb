@@ -1,6 +1,7 @@
 module Route
-  def match(requested_line)
-    @path_regex === requested_line
+  def match(request_line)
+    path_target, in_line_params_ = request_line.split('?')
+    @path_regex === path_target
   end
 
   def extract_params(path_target)

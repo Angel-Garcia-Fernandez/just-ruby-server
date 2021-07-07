@@ -11,4 +11,13 @@ class BaseView
       #{message_body}
     MSG
   end
+
+  def redirect_to(path)
+    <<~MSG
+      HTTP/1.1 302
+      Content-Type: text/html
+      Location: #{path}
+
+    MSG
+  end
 end

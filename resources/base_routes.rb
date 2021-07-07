@@ -38,14 +38,12 @@ class BaseRoutes
   end
 
   def resolve(method_token, request_line)
-    path_target, in_line_params = request_line.split('?')
-
     #Find the correct route
-    route = @routes.get(method_token, path_target)
+    route = @routes.get(method_token, request_line)
     return unless route
 
     #execute controller
-    route.resolve(path_target)
+    route.resolve(request_line)
   end
 
   private
@@ -87,7 +85,7 @@ class BaseRoutes
       controller, action = opts[:to].split('#')
       @routes.add_controller_route(method, path, controller, action)
     elsif opts[:redirect_to]
-      @routes.add_redirection_route(method, path, opts[:redirected_to])
+      @routes.add_redirection_route(method, path, opts[:redirect_to])
     end
   end
 end
