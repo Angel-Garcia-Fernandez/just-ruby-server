@@ -1,13 +1,18 @@
 require 'socket'
 require 'uri'
-require 'yaml/store'
-Dir['resources/*.rb'].each { |file| require_relative file }
-require_relative 'config/routes'
 
-port = 9999
+Dir['resources/*.rb'].each { |file| require_relative file }
+
+require_relative 'config/routes'
+require_relative 'parser'
+
+opts = Parser.parse ARGV
+port = opts.port || 9999
 server = TCPServer.new(port)
 
+
 #Create a YAML Store
+require 'yaml/store'
 store = YAML::Store.new('persistance/data.yml')
 
 
