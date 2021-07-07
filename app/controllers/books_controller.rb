@@ -6,4 +6,24 @@ class BooksController < BaseController
   def show
     render(:show)
   end
+
+  def new
+    render(:new)
+  end
+
+  def create
+
+  end
+
+  def edit
+    render(:edit)
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
 end
