@@ -7,9 +7,10 @@ class Parser
     args = Options.new()
 
     opt_parser = OptionParser.new do |opts|
-      opts.banner = "Usage: ruby server.rb [options]"
+      opts.banner = "Usage: ruby server.rb [options]\n" +
+        "Description: creates an http server with a RESTful books API."
 
-      opts.on("-pPORT", "--port=PORT", "port number") do |p|
+      opts.on("-pPORT", "--port=PORT", "port number (default 9999") do |p|
         args.port = p
       end
 
