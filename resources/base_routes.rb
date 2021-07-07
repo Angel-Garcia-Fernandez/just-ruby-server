@@ -6,6 +6,7 @@ class BaseRoutes
     DELETE = 'DELETE'
   ]
 
+  # Inner class to manage routes
   class RoutesHash
     def initialize
       @hash = { GET => {}, POST => {}, PUT => {}, DELETE => {} }
@@ -22,6 +23,7 @@ class BaseRoutes
     end
   end
 
+  # BaseRoutes methods
   def initialize
     @routes = RoutesHash.new
     define_routes
@@ -46,6 +48,7 @@ class BaseRoutes
 
   private
 
+  # Adding a get route
   def get(path, opts={})
     controller, action = opts[:to].split('#')
     @routes.add(GET, path, controller, action)
