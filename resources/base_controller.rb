@@ -6,7 +6,7 @@ class BaseController
 
   def render(view, opts={})
     require_relative "../app/views/#{controller_name}/#{view}"
-    view_class = self.class.const_get(view.capitalize)
+    view_class = self.class.const_get(view.to_s.split('_').map(&:capitalize).join)
     view_class.new(@params).render
   end
 
