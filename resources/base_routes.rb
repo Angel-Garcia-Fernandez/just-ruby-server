@@ -1,3 +1,6 @@
+require_relative 'routes/controller_route'
+require_relative 'routes/redirection_route'
+
 class BaseRoutes
   METHODS = [
     GET = 'GET',
@@ -6,20 +9,25 @@ class BaseRoutes
     DELETE = 'DELETE'
   ]
 
-  # Inner class to manage routes
+  # Inner class to manage every route
   class RoutesHash
+    # RoutesHash methods
     def initialize
-      @hash = { GET => {}, POST => {}, PUT => {}, DELETE => {} }
+      @hash = { GET => [], POST => [], PUT => [], DELETE => [] }
     end
 
-    def add(method, path, controller, action)
-      path_regex = Regexp.new "^#{path.gsub(/:[\w_]+/, '(\d+)')}$"
-      param_names = path.scan(/:([\w_]+)/).flatten
-      @hash[method][path_regex] = [controller, action, path_regex, param_names]
+    def add_controller_route(method, path, controller, action)
+      route = ControllerRoute.new(method, path, controller, action)
+      @hash[method] << route
+    end
+
+    def add_redirection_route(method, path, redirect_to)
+      route = RedirectionRoute.new(method, path, redirect_to)
+      @hash[method] << route
     end
 
     def get(method, request_line)
-      @hash[method].find { |path_regex, values_| path_regex === request_line }&.last
+      @hash[method].find { |route| route.match(request_line) }
     end
   end
 
@@ -33,26 +41,53 @@ class BaseRoutes
     path_target, in_line_params = request_line.split('?')
 
     #Find the correct route
-    controller, action, path_regex, param_names = @routes.get(method_token, path_target)
-    return unless controller && action
-
-    #extract params
-    param_values = path_regex.match(path_target).captures
-    params = Hash[param_names.zip(param_values)]
+    route = @routes.get(method_token, path_target)
+    return unless route
 
     #execute controller
-    require_relative "../app/controllers/#{controller}_controller"
-    controller = self.class.const_get("#{controller.capitalize}Controller")
-    controller.new(params).send(action)
+    route.resolve(path_target)
   end
 
   private
 
-  # Adding a get route
-  def get(path, opts={})
-    controller, action = opts[:to].split('#')
-    @routes.add(GET, path, controller, action)
+  # Adding any type route
+  def match(path, method, opts={})
+    add_route(method, path, opts)
   end
 
+  # Adding a get route
+  def get(path, opts={})
+    add_route(GET, path, opts)
+  end
+
+  # Adding a get route
+  def post(path, opts={})
+    add_route(POST, path, opts)
+  end
+
+  # Adding a get route
+  def put(path, opts={})
+    add_route(PUT, path, opts)
+  end
+
+  # Adding a delete route
+  def delete(path, opts={})
+    add_route(DELETE, path, opts)
+  end
+
+
+  # Method overwritten by inherited classes to define its routes
   def define_routes; end
+
+
+  def add_route(method, path, opts)
+    raise StandardError('wrong route: needs to: or redirect_to: options') unless opts[:to] || opts[:redirect_to]
+
+    if opts[:to]
+      controller, action = opts[:to].split('#')
+      @routes.add_controller_route(method, path, controller, action)
+    elsif opts[:redirect_to]
+      @routes.add_redirection_route(method, path, opts[:redirected_to])
+    end
+  end
 end
