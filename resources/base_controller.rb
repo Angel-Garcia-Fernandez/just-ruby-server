@@ -10,6 +10,10 @@ class BaseController
     view_class.new(@params).render
   end
 
+  def redirect_to(path)
+    BaseView.redirect_to(path)
+  end
+
   def controller_name
     self.class.to_s.downcase.gsub('controller', '')
   end

@@ -1,3 +1,5 @@
+require_relative 'book_view'
+
 class Show < BaseView
   include BookView
 
@@ -9,8 +11,8 @@ class Show < BaseView
 
   def html
     <<~BODY
-    <h1>Book</h1>
-    #{render_book(@book)}
+      <h1>Book</h1>
+      #{render_book(@book)}
     BODY
   end
 end

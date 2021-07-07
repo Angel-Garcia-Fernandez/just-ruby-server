@@ -1,3 +1,5 @@
+require_relative 'book_view'
+
 class Index < BaseView
   include BookView
 
@@ -9,12 +11,12 @@ class Index < BaseView
 
   def html
     <<~BODY
-    <h1>All books</h1>
-    <ol>
-      <li>
-        #{@books.map { |b| render_book(b) }.join('</li><li>')}
-      </li>
-    </ol>
+      <h1>All books</h1>
+      <ol>
+        <li>
+          #{@books.map { |b| render_book(b) }.join('</li><li>')}
+        </li>
+      </ol>
     BODY
   end
 end

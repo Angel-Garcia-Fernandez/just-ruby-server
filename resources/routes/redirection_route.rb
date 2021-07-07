@@ -12,6 +12,6 @@ class RedirectionRoute
   end
 
   def resolve(request_line)
-    BaseView.new.redirect_to(@redirect_to)
+    BaseController.new.redirect_to(@redirect_to)
   end
 end
