@@ -17,11 +17,11 @@ class Index < BaseView
         </style>
       </head>
       <h1>All books</h1>
-      <table><thead><tr><th colspan='7'>Books</th></tr></thead>
+      <table><thead><tr><th colspan='8'>Books</th></tr></thead>
       <tr><td>Date bought</td><td>Cover</td><td>ISBN</td><td>Title</td><td>Author</td>
-      <td>Date published</td><td>Pages</td></tr>
-      #{@books.each { |book| render_book_row(book)}}
-      </table><p></p><button onclick="window.location.href='/books/new'">Click to add a new book</button>
+      <td>Date published</td><td>Pages</td><td></td></tr>
+      #{@books.map { |book| render_book_row(book) }}
+      </table><p></p>#{button('/books/new', 'Click to add a new book')}
     BODY
   end
 

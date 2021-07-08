@@ -13,6 +13,8 @@ class Show < BaseView
     <<~BODY
       <h1>Book with ISBN #{@book.isbn} </h1>
       #{render_book(@book)}
+      #{button("/books/#{@book.isbn}/update", 'Update')}
+      #{button('/books', 'Back to list')}
     BODY
   end
 end

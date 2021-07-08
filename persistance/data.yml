@@ -24,3 +24,10 @@
 - :isbn: '5'
   :name: full in
   :bought_at: '2021-07-06'
+- :isbn: '0618129022'
+  :title: The Lord of the Rings
+  :cover: https://covers.openlibrary.org/b/id/10586786-S.jpg
+  :author: J.R.R. Tolkien
+  :published_at: 2003?
+  :pages:
+  :bought_at:

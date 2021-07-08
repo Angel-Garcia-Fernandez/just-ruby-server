@@ -11,8 +11,8 @@ module OpenLibraryService
       book_data = JSON.parse(res.body)["ISBN:#{isbn}"]
       { title: book_data['title'],
         pages: book_data['number_of_pages'],
-        published: book_data['publish_date'],
-        image: book_data.dig('cover', 'small'),
+        published_at: book_data['publish_date'],
+        cover: book_data.dig('cover', 'small'),
         author: book_data.dig('authors', 0, 'name') }
     end
   end
