@@ -5,10 +5,10 @@ class Routes < BaseRoutes
     get '/books', to: 'books#index'
     get '/books/new', to: 'books#new'
     post '/books', to: 'books#create'
-    get '/books/:id', to: 'books#show'
-    get '/books/:id/edit', to: 'books#edit'
-    put '/books/:id', to: 'books#update'
-    delete '/books/:id', to: 'books#destroy'
+    get '/books/:isbn', to: 'books#show'
+    get '/books/:isbn/edit', to: 'books#edit'
+    put '/books/:isbn', to: 'books#update'
+    delete '/books/:isbn', to: 'books#destroy'
 
     get '/writings', redirect_to: '/books'
 

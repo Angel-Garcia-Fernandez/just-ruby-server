@@ -11,7 +11,7 @@ class BaseModel
     end
 
     def all
-      persistence.all
+      persistence.all.map { |obj| new(obj) }
     end
 
     def set_id_field(id_field)

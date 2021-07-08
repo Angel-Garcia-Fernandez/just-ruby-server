@@ -29,6 +29,7 @@ class PersistenceModel
       _all << params
       _find(id)
     end
+    true
   end
 
   def find(id)

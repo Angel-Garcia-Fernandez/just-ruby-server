@@ -5,8 +5,8 @@ class BooksController < BaseController
   end
 
   def show
-    @book = Book.find(@params[:isbn])
-    render(:show)
+    @book = Book.find(@params[:isbn].to_i)
+    @book ? render(:show) : redirect_to('/books')
   end
 
   def new
@@ -17,15 +17,15 @@ class BooksController < BaseController
   def create
     @book = Book.new(@params)
     if @book.save
-      redirect_to("/books/#{@book[:isbn]}")
+      redirect_to("/books/#{@book.isbn}")
     else
       render(:new)
     end
   end
 
   def edit
-    @book = Book.find(@params[:isbn])
-    render(:edit)
+    @book = Book.find(@params[:isbn].to_i)
+    @book ? render(:edit) : redirect_to('/books')
   end
 
   def update
