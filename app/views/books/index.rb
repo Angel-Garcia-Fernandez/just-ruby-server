@@ -11,12 +11,32 @@ class Index < BaseView
 
   def html
     <<~BODY
+      <head>
+        <style>
+          #{css}
+        </style>
+      </head>
       <h1>All books</h1>
-      <ol>
-        <li>
-          #{@books.map { |b| render_book(b) }.join('</li><li>')}
-        </li>
-      </ol>
+      <table><thead><tr><th colspan='7'>Books</th></tr></thead>
+      <tr><td>Date bought</td><td>Cover</td><td>ISBN</td><td>Title</td><td>Author</td>
+      <td>Date published</td><td>Pages</td></tr>
+      #{@books.each { |book| render_book_row(book)}}
+      </table><p></p><button onclick="window.location.href='/books/new'">Click to add a new book</button>
+    BODY
+  end
+
+  def css
+    <<~BODY
+      table,
+      td {
+        border: 1px solid #333;
+      }
+
+      thead,
+      tfoot {
+        background-color: #333;
+          color: #fff;
+      }
     BODY
   end
 end
