@@ -12,8 +12,8 @@ class Routes < BaseRoutes
     get '/books/:isbn/update', to: 'book_info#find_book'
 
     get '/writings', redirect_to: '/books'
+    get '/error', to: 'errors#error'
 
     get '*', to: 'errors#not_found'
-    get '/error', to: 'errors#error'
   end
 end

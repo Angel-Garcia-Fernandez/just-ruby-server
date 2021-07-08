@@ -6,13 +6,16 @@ class BookInfoController < BaseController
     isbn = @params[:isbn]
     redirect_to "/books/#{isbn}" unless isbn
 
-    new_info = OpenLibraryService.get_book_data(isbn)
-    if new_info
-      Book.find(isbn).assign(new_info)
+    book_data = OpenLibraryService.get_book_data(isbn)
+    if book_data
+      book = Book.find(isbn).assign(book_data)
+      puts book_data
+
+      book.save
       redirect_to "/books/#{isbn}"
     end
   rescue StandardError => e
-    @error = e.message
+    puts e.message
     redirect_to '/error'
   end
 end
