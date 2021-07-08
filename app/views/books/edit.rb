@@ -9,7 +9,7 @@ class Edit < BaseView
     <form action='/books/#{@params[:isbn]}' method='post' enctype='application/x-xxx-form-urlencoded'>
       <input name='_method' type='hidden' value='put'>
       <input type='hidden' name='isbn' value='#{@book.isbn}'>
-      <p><label>Name <input type='text' name='name' value='#{@book.name}'></label></p>
+      <p><label>Title <input type='text' name='title' value='#{@book.title}'></label></p>
       <p><label>Date bought <input type='date' name='bought_at' value='#{@book.bought_at}'></label></p>
       <p><button>Save</button></p>
     </form>
