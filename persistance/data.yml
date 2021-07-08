@@ -2,3 +2,25 @@
 :daily_steps:
 - :date: '2021-01-01'
   :step_count: '10000'
+- :date: '2021-07-07'
+  :step_count: '1'
+- :date: '2021-07-08'
+  :step_count: '3'
+- :date: '2021-07-14'
+  :step_count: '12002'
+:book:
+- :isbn: 2
+  :name: LotR
+  :bought_at:
+- :isbn: 6
+  :name: oohyeah
+  :bought_at:
+- :isbn: 5
+  :name: full
+  :bought_at:
+- :isbn:
+  :name:
+  :bought_at:
+- :isbn: '86'
+  :name: asdf
+  :bought_at:

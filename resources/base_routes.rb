@@ -37,13 +37,13 @@ class BaseRoutes
     define_routes
   end
 
-  def resolve(method_token, request_line)
+  def resolve(method_token, request_line, data)
     #Find the correct route
     route = @routes.get(method_token, request_line)
     return unless route
 
     #execute controller
-    route.resolve(request_line)
+    route.resolve(request_line, data)
   end
 
   private

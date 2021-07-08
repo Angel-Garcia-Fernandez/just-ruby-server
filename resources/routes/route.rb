@@ -4,10 +4,15 @@ module Route
     @path_regex === path_target
   end
 
-  def extract_params(path_target)
+  def extract_params(request_line)
+    path_target, in_line_params = request_line.split('?')
+    params = (in_line_params || '').split('&').map { |pair| pair.split('=') }.to_h || {}
+
     param_values = @path_regex.match(path_target).captures
-    Hash[@param_names.zip(param_values)]
+    params.merge(Hash[@param_names.zip(param_values)])
   end
+
+  def resolve(request_line, data = {}); end
 
   private
 
