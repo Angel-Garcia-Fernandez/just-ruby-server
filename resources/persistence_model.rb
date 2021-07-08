@@ -15,7 +15,7 @@ class PersistenceModel
 
   def all
     store.transaction do
-      _all
+      _all || []
     end
   end
 
