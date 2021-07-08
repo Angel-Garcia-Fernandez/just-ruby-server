@@ -9,6 +9,7 @@ class Routes < BaseRoutes
     get '/books/:isbn/edit', to: 'books#edit'
     put '/books/:isbn', to: 'books#update'
     delete '/books/:isbn', to: 'books#destroy'
+    get '/books/:isbn/update', to: 'books_info#find_book'
 
     get '/writings', redirect_to: '/books'
 

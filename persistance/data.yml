@@ -24,3 +24,9 @@
 - :isbn: '86'
   :name: asdf
   :bought_at:
+- :isbn: '123345'
+  :name: were
+  :bought_at: awe
+- :isbn: '12'
+  :name: dwaefsr
+  :bought_at: qwewr
