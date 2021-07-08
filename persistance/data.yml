@@ -9,6 +9,13 @@
 - :date: '2021-07-14'
   :step_count: '12002'
 :book:
+- :isbn: '0140328726'
+  :title: Fantastic Mr. Fox
+  :cover: https://covers.openlibrary.org/b/id/8739161-S.jpg
+  :author: Roald Dahl
+  :published_at: October 1, 1988
+  :pages: 96
+  :bought_at: '2020-08-23'
 - :isbn: '0618129022'
   :title: The Lord of the Rings
   :cover: https://covers.openlibrary.org/b/id/10586786-S.jpg
@@ -16,10 +23,3 @@
   :published_at: 2003?
   :pages:
   :bought_at: '2012-02-01'
-- :isbn: '0140328726'
-  :title: Fantastic Mr. Fox
-  :cover: https://covers.openlibrary.org/b/id/8739161-S.jpg
-  :author: Roald Dahl
-  :published_at: October 1, 1988
-  :pages: 96
-  :bought_at:

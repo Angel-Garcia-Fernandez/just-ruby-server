@@ -15,7 +15,7 @@ module BookView
     <<~BODY
       <tr><td>#{book.bought_at}</td><td><img src='#{book.cover}'alt='#{book.title}'/></td>
         <td>#{book.isbn}</td><td>#{book.title}</td><td>#{book.author}</td><td>#{book.published_at}</td>
-        <td>#{book.pages}</td><td>#{button("/books/#{book.isbn}/update", 'Update')}</td></tr>
+        <td>#{book.pages}</td><td>#{button("/books/#{book.isbn}/edit", 'Edit')} #{button("/books/#{book.isbn}/update", 'Update')}</td></tr>
     BODY
   end
 
