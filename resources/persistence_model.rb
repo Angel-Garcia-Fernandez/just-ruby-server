@@ -53,7 +53,7 @@ class PersistenceModel
   end
 
   def _find(id)
-    store[model.to_sym].detect { |object| object[@id] === id }
+    store[model.to_sym].detect { |object| object[@id].to_s === id.to_s }
   end
 
   def _delete(id)
