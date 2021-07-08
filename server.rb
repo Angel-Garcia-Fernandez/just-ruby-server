@@ -4,7 +4,6 @@ require 'uri'
 Dir['resources/*.rb'].each { |file| require_relative file }
 
 require_relative 'config/routes'
-require_relative 'persistance/persistance_model'
 require_relative 'parser'
 
 # Parse command line options
@@ -14,8 +13,8 @@ opts = Parser.parse ARGV
 port = opts.port || 9999
 server = TCPServer.new(port)
 
-# Start persistance model
-PersistanceModel.start
+# Start persistence model
+PersistenceModel.start
 
 # Start server to listen to port
 while session = server.accept

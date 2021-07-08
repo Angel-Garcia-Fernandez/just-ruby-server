@@ -3,27 +3,33 @@ require 'yaml/store'
 class BaseModel
   @@id = :id
   @@fields = []
-  @@data = PersistanceModel.store
 
   class << self
-    def find
-
+    def find(id)
+      obj = persistence.find(id)
+      new(obj) if obj
     end
 
     def all
-      @@data.transaction do
-        @@data[self.class.to_s.downcase.to_sym]
-      end
+      persistence.all
     end
 
     def set_id_field(id_field)
-      puts 'set id'
       @@id = id_field.to_sym
     end
 
     def set_fields(*fields)
-      puts 'set fields'
       @@fields = fields.flat_map(&:to_s).map(&:to_sym)
+    end
+
+    def modelname
+      self.to_s.downcase
+    end
+
+    private
+
+    def persistence
+      @persistance ||= PersistenceModel.new(modelname, @@id)
     end
   end
 
@@ -41,7 +47,7 @@ class BaseModel
   end
 
   def save
-
+    persistence.save(attributes)
   end
 
   def assign(params)
@@ -50,6 +56,20 @@ class BaseModel
   end
 
   def destroy
+    persistence.delete(send(@@id))
+  end
 
+  def attributes
+    @@fields.reduce({}) { |hash, field| hash[field] = self.send(field); hash }
+  end
+
+  def modelname
+    self.class.to_s.downcase
+  end
+
+  private
+
+  def persistence
+    @persistence ||= PersistenceModel.new(modelname, @@id)
   end
 end
