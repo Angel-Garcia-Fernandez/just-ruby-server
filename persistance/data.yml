@@ -15,12 +15,12 @@
 - :isbn: 6
   :name: oohyeah
   :bought_at:
-- :isbn: 5
-  :name: full
-  :bought_at:
 - :isbn:
   :name:
   :bought_at:
 - :isbn: '86'
   :name: asdf
   :bought_at:
+- :isbn: '5'
+  :name: full
+  :bought_at: '2021-07-27'

@@ -31,7 +31,9 @@ while session = server.accept
     data = extract_data(full_request, session, method_token)
 
     # Server side correction of RESTful methods
-    method_token = 'PUT' if method_token == 'POST' && data['_method']&.upcase == 'PUT'
+    if method_token == 'POST' && ['PUT', 'DELETE'].include?(corrected_method_token = data['_method']&.upcase)
+      method_token = corrected_method_token
+    end
 
     puts "Received a #{method_token} request to #{target} with #{version_number}"
 
