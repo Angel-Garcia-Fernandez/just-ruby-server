@@ -29,13 +29,9 @@ class BooksController < BaseController
   end
 
   def update
-    puts @params
-    @book = Book.assign(@params)
-    if @book.save
-      redirect_to("/books/#{@book[:isbn]}")
-    else
-      render(:edit)
-    end
+    @book = Book.find(@params[:isbn])
+    @book.assign(@params)
+    @book.save ? redirect_to("/books/#{@book.isbn}") : render(:edit)
   end
 
   def destroy

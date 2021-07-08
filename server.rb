@@ -26,10 +26,14 @@ while session = server.accept
   # Process requests
   unless request.nil?
     method_token, target, version_number = request.split
-    puts "Received a #{method_token} request to #{target} with #{version_number}"
 
     # Extract data
-    data = extract_data(full_request, session) if ['POST', 'PUT'].include?(method_token)
+    data = extract_data(full_request, session, method_token)
+
+    # Server side correction of RESTful methods
+    method_token = 'PUT' if method_token == 'POST' && data['_method']&.upcase == 'PUT'
+
+    puts "Received a #{method_token} request to #{target} with #{version_number}"
 
     # Route request & build response
     routes = Routes.new
