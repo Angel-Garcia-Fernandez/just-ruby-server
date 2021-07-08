@@ -14,7 +14,7 @@ class ControllerRoute
 
   def resolve(request_line, data)
     require_relative "../../app/controllers/#{@controller}_controller"
-    controller = self.class.const_get("#{@controller.capitalize}Controller")
+    controller = self.class.const_get("#{@controller.split('_').map(&:capitalize).join}Controller")
 
     data ||= {}
     params = extract_params(request_line)
