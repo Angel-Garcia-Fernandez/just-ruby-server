@@ -20,7 +20,7 @@ class Index < BaseView
       <table><thead><tr><th colspan='8'>Books</th></tr></thead>
       <tr><td>Date bought</td><td>Cover</td><td>ISBN</td><td>Title</td><td>Author</td>
       <td>Date published</td><td>Pages</td><td></td></tr>
-      #{@books.map { |book| render_book_row(book) }}
+      #{table}
       </table><p></p>#{button('/books/new', 'Click to add a new book')}
     BODY
   end
@@ -38,5 +38,13 @@ class Index < BaseView
           color: #fff;
       }
     BODY
+  end
+
+  def table
+    table = ''
+    @books.each do |book|
+      table << render_book_row(book)
+    end
+    table
   end
 end
