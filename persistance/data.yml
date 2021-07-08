@@ -9,25 +9,17 @@
 - :date: '2021-07-14'
   :step_count: '12002'
 :book:
-- :isbn: 2
-  :name: LotR
-  :bought_at:
-- :isbn: 6
-  :name: oohyeah
-  :bought_at:
-- :isbn:
-  :name:
-  :bought_at:
-- :isbn: '86'
-  :name: asdf
-  :bought_at:
-- :isbn: '5'
-  :name: full in
-  :bought_at: '2021-07-06'
 - :isbn: '0618129022'
   :title: The Lord of the Rings
   :cover: https://covers.openlibrary.org/b/id/10586786-S.jpg
   :author: J.R.R. Tolkien
   :published_at: 2003?
   :pages:
+  :bought_at: '2012-02-01'
+- :isbn: '0140328726'
+  :title: Fantastic Mr. Fox
+  :cover: https://covers.openlibrary.org/b/id/8739161-S.jpg
+  :author: Roald Dahl
+  :published_at: October 1, 1988
+  :pages: 96
   :bought_at:
