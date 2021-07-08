@@ -7,7 +7,7 @@ class New < BaseView
     <<~BODY
     <form action='/books' method='post' enctype='application/x-xxx-form-urlencoded'>
       <p><label>Name <input type='text' name='name'></label></p>
-      <p><label>Date bought <input type='date' name='date'></label></p>
+      <p><label>Date bought <input type='date' name='bought_at'></label></p>
       <p><label>ISBN <input type='number' name='isbn'></label></p>
       <p><button>Add new entry</button></p>
     </form>
