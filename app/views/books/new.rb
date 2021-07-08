@@ -5,7 +5,7 @@ class New < BaseView
 
   def html
     <<~BODY
-    <form action='/add/book' method='post' enctype='application/x-xxx-form-urlencoded'>
+    <form action='/books' method='post' enctype='application/x-xxx-form-urlencoded'>
       <p><label>Name <input type='text' name='name'></label></p>
       <p><label>Date bought <input type='date' name='date'></label></p>
       <p><label>ISBN <input type='number' name='isbn'></label></p>

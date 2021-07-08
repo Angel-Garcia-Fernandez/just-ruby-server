@@ -5,11 +5,11 @@ class Edit < BaseView
 
   def html
     <<~BODY
-    <form action='/add/book/#{@params[:id]}' method='put' enctype='application/x-xxx-form-urlencoded'>
-      <p><label>Name <input type='text' name='name'></label></p>
-      <p><label>Date bought <input type='date' name='date'></label></p>
-      <p><label>ISBN <input type='number' name='isbn'></label></p>
-      <p><button>Add new entry</button></p>
+    <form action='/books/#{@params[:isbn]}' method='put' enctype='application/x-xxx-form-urlencoded'>
+      <p><label>Name <input type='text' name='name' value='#{@book.name}'></label></p>
+      <p><label>Date bought <input type='date' name='bought_at' value='#{@book.bought_at}'></label></p>
+      <p><label>ISBN <input type='number' name='isbn' value='#{@book.isbn}'></label></p>
+      <p><button>Save</button></p>
     </form>
     BODY
   end
