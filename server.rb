@@ -1,6 +1,7 @@
 require 'socket'
 require 'uri'
 
+# require all the resources
 Dir['resources/*.rb'].each { |file| require_relative file }
 
 require_relative 'config/routes'
@@ -21,11 +22,11 @@ PersistenceModel.start
 while session = server.accept
   # Listening to requests
   full_request = get_full_request(session)
-  request = full_request[0]
+  request_line = full_request[0]
 
   # Process requests
-  unless request.nil?
-    method_token, target, version_number = request.split
+  unless request_line.nil?
+    method_token, target, version_number = request_line.split
 
     # Extract data
     data = extract_data(full_request, session, method_token)
