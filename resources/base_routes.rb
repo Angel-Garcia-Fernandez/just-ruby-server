@@ -26,7 +26,7 @@ class BaseRoutes
       @hash[method] << route
     end
 
-    def get(method, request_line)
+    def find_route(method, request_line)
       @hash[method].find { |route| route.match(request_line) }
     end
   end
@@ -38,12 +38,12 @@ class BaseRoutes
   end
 
   def resolve(method_token, request_line, data)
-    #Find the correct route
-    route = @routes.get(method_token, request_line)
+    # find the correct route
+    route = @routes.find_route(method_token, request_line)
     return unless route
 
-    #execute controller
-    route.resolve(request_line, data)
+    # reacts accordingly
+    route.respond_to_request(request_line, data)
   end
 
   private

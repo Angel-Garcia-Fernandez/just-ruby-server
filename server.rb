@@ -36,6 +36,7 @@ while session = server.accept
       method_token = corrected_method_token
     end
 
+    # Log request
     puts "Received a #{method_token} request to #{target} with #{version_number}"
 
     # Route request & build response
