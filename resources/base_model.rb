@@ -1,5 +1,3 @@
-require 'yaml/store'
-
 class BaseModel
   @@id = :id
   @@fields = []

@@ -11,7 +11,7 @@ class RedirectionRoute
     @param_names = path.scan(/:([\w_]+)/).flatten
   end
 
-  def resolve(request_line, data = {})
+  def respond_to_request(request_line, data = {})
     BaseController.new.redirect_to(@redirect_to)
   end
 end

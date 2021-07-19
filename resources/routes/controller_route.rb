@@ -12,7 +12,7 @@ class ControllerRoute
     @param_names = path.scan(/:([\w_]+)/).flatten
   end
 
-  def resolve(request_line, data)
+  def respond_to_request(request_line, data)
     require_relative "../../app/controllers/#{@controller}_controller"
     controller = self.class.const_get("#{@controller.split('_').map(&:capitalize).join}Controller")
 

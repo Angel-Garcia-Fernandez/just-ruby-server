@@ -12,7 +12,7 @@ module Route
     params.merge(Hash[@param_names.zip(param_values)])
   end
 
-  def resolve(request_line, data = {}); end
+  def respond_to_request(request_line, data = {}); end
 
   private
 
